@@ -8,6 +8,8 @@ Combine 将你的任务描述转化为节点工作流。通过持续对话或直
 
 Combine turns task descriptions into node workflows. Refine the flow through conversation or direct canvas edits, connecting AI models, research, data processing and reusable capabilities to produce a final deliverable.
 
+![Combine AI 调研工作流：对话、节点编排与最终报告 / AI research workflow with conversation, connected nodes and a final report](docs/images/research-workflow-overview.png)
+
 ## 功能亮点 / Highlights
 
 | 中文 | English |
@@ -84,7 +86,7 @@ The repository also contains the separate browser/server compatibility applicati
 
 Private desktop attachments, knowledge, local references and derived material stay on the device. Only public prompts you choose to send use a configured API. Team sharing uploads a reviewed, sanitized workflow definition; downloaded copies are independent and never auto-run.
 
-This repository contains application source, dependency locks, automated synthetic contract tests, build/start scripts, reviewed product screenshots made with sample data, and required public third-party assets/licenses. It does not include API keys, user workspaces/databases, personal conversations or captures, private documents, model weights, build tools or generated installers. Downloaded model/runtime resources have their own licenses.
+This repository contains application source, dependency locks, automated synthetic contract tests, build/start scripts, reviewed product screenshots, and required public third-party assets/licenses. It does not include API keys, user workspaces/databases, unapproved personal conversations or captures, private documents, model weights, build tools or generated installers. Downloaded model/runtime resources have their own licenses.
 
 ## Checks
 
