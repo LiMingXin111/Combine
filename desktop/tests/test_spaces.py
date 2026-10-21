@@ -14,7 +14,7 @@ from runtime.sharing import prepare, approved, import_template
 class SpacesTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
-        self.base = Path(self.temp.name) / 'original'
+        self.base = (Path(self.temp.name) / 'original').resolve()
         self.registry = Spaces(self.base)
         self.service = Service(self.base)
 
