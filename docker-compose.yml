@@ -1,0 +1,22 @@
+# 两种部署形态：
+#   docker compose --profile local up   → 自托管版：只监听本机，可接入宿主机上的 Ollama（host.docker.internal:11434）
+#   docker compose --profile cloud up   → 云端版：禁止访问私网地址，请在前面放 HTTPS 反向代理并设置 COOKIE_SECURE=1
+services:
+  combine-local:
+    profiles: ["local"]
+    build: .
+    ports: ["127.0.0.1:8765:8765"]
+    env_file: [.env]
+    environment: { DEPLOY_MODE: self_hosted }
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    volumes: ["./data:/data"]
+  combine-cloud:
+    profiles: ["cloud"]
+    build: .
+    ports: ["8765:8765"]
+    env_file: [.env]
+    environment: { DEPLOY_MODE: cloud, REGISTRATION_MODE: open }
+    volumes: ["combine-data:/data"]
+    restart: unless-stopped
+volumes:
+  combine-data:

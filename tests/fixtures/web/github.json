@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "full_name": "example/reference-0",
+      "html_url": "https://example.org/repos/0",
+      "description": "Synthetic repository response.",
+      "stargazers_count": 1,
+      "language": "Python",
+      "updated_at": "2024-01-01T00:00:00Z"
+    },
+    {
+      "full_name": "example/reference-1",
+      "html_url": "https://example.org/repos/1",
+      "description": "Synthetic repository response.",
+      "stargazers_count": 2,
+      "language": "Python",
+      "updated_at": "2024-01-01T00:00:00Z"
+    },
+    {
+      "full_name": "example/reference-2",
+      "html_url": "https://example.org/repos/2",
+      "description": "Synthetic repository response.",
+      "stargazers_count": 3,
+      "language": "Python",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  ]
+}

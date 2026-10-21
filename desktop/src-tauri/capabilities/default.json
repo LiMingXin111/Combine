@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "main-capability",
+  "description": "Local application window. No shell, filesystem, HTTP or remote-page permissions.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

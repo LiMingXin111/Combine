@@ -1,0 +1,210 @@
+/* A single, persistent conversation lives at the right edge on every page. */
+.conversation-dock.right-chat {
+  height: 100%;
+  min-width: 0;
+  border-right: 0;
+  border-left: 1px solid var(--border-strong);
+  overflow: hidden;
+}
+.right-chat .assistant-panel {
+  min-height: 0;
+  height: 100%;
+}
+.right-chat .assistant-header {
+  padding: 18px 16px;
+}
+.right-chat .conversation-scroll {
+  overscroll-behavior: contain;
+}
+.right-chat .composer-area {
+  padding: 14px;
+}
+.right-chat .conversation-welcome {
+  padding: 22px 0;
+}
+.right-chat .conversation-welcome h1 {
+  font-size: 21px;
+}
+.right-chat .conversation-starters {
+  flex-direction: column;
+}
+.right-chat .canvas-context {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sidebar {
+  overflow: hidden;
+  padding-top: 24px;
+}
+.sidebar .brand {
+  padding-bottom: 20px;
+  flex-shrink: 0;
+}
+.sidebar .workspace-switch {
+  min-height: 48px;
+  padding: 8px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+.sidebar .new-conversation-button {
+  margin: 0 0 14px;
+  padding: 10px 8px;
+  flex-shrink: 0;
+}
+.sidebar .nav-label {
+  margin-bottom: 6px;
+  flex-shrink: 0;
+}
+.sidebar > nav {
+  gap: 3px;
+  flex-shrink: 0;
+}
+.sidebar > nav > button {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+.sidebar-bottom {
+  flex-shrink: 0;
+  margin-top: 0;
+  padding-top: 12px;
+}
+.sidebar .user-row {
+  display: none;
+}
+.sidebar .sidebar-help {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.conversation-history {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 90px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.conversation-history h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+.conversation-history h2 > span {
+  font-weight: 400;
+  color: var(--subtle);
+  font-variant-numeric: tabular-nums;
+}
+.conversation-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+  margin-bottom: 8px;
+  color: var(--subtle);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+}
+.conversation-search input {
+  min-width: 0;
+  width: 100%;
+  padding: 7px 0;
+  border: 0;
+  font-size: 10px;
+  background: none;
+  box-shadow: none;
+}
+.conversation-search:focus-within {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+.conversation-list {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2px 2px 4px;
+}
+.conversation-list > button {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 8px;
+  padding: 9px 7px;
+  margin-bottom: 4px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  color: var(--muted);
+  text-align: left;
+}
+.conversation-list > button > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.conversation-list > button > span {
+  min-width: 0;
+  flex: 1;
+}
+.conversation-list strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.conversation-list small {
+  display: block;
+  font-size: 9px;
+  margin-top: 3px;
+  color: var(--subtle);
+}
+.conversation-list > button:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+.conversation-list > button[aria-current="page"] {
+  background: var(--surface-3);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+.conversation-list > p {
+  font-size: 10px;
+  line-height: 1.7;
+  padding: 6px 8px;
+  color: var(--subtle);
+}
+.canvas-body > .capability-library {
+  min-height: 0;
+}
+.capability-library .panel-title .button-row {
+  gap: 6px;
+  align-items: center;
+}
+.capability-library .panel-title .button-row > span {
+  font-size: 11px;
+  color: var(--subtle);
+}
+@media (max-height: 850px) {
+  .sidebar .workspace-switch {
+    display: none;
+  }
+  .sidebar .development-marker small,
+  .sidebar .local-marker small {
+    display: none;
+  }
+  .sidebar .development-marker {
+    margin-bottom: 8px;
+    padding: 8px;
+  }
+  .sidebar .local-marker {
+    padding: 9px 8px;
+  }
+  .sidebar .conversation-history {
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+}

@@ -1,0 +1,735 @@
+{
+  "version": "2026-10-07",
+  "note": "策展目录：官方或高星 + 活跃维护 + 权限可最小化。featured=true 为首批试点；verified_at 为最近一次实测入口的日期，空串表示目录收录（连接前会做健康检查，失败会显示原因）。",
+  "domains": [
+    { "key": "search", "zh": "搜索研究", "en": "Search & Research", "desc": "版本文档、通用搜索、学术与抓取" },
+    { "key": "browser", "zh": "浏览器", "en": "Browser", "desc": "真实浏览器操作、截图与页面提取" },
+    { "key": "code", "zh": "代码开发", "en": "Code & Dev", "desc": "仓库、Issue / PR、错误监控、项目管理" },
+    { "key": "data", "zh": "数据", "en": "Data", "desc": "数据库查询、结果集与指标" },
+    { "key": "office", "zh": "办公文档", "en": "Office & Docs", "desc": "笔记、文档、知识管理" },
+    { "key": "chat", "zh": "通讯协作", "en": "Chat & Collab", "desc": "消息、邮件、团队协作" },
+    { "key": "design", "zh": "设计创意", "en": "Design & Creative", "desc": "设计稿、3D 场景、视觉创作" },
+    { "key": "finance", "zh": "金融商业", "en": "Finance", "desc": "支付、账单、行情数据" },
+    { "key": "cloud", "zh": "云与运维", "en": "Cloud & Ops", "desc": "部署、日志、容器与云资源" },
+    { "key": "life", "zh": "生活服务", "en": "Life", "desc": "地图、日历、时间与出行" },
+    { "key": "media", "zh": "多媒体", "en": "Media", "desc": "音视频处理、语音合成" },
+    { "key": "knowledge", "zh": "知识", "en": "Knowledge", "desc": "本地文件、记忆、向量检索" }
+  ],
+  "entries": [
+    {
+      "key": "mcp.context7", "name": "Context7 版本文档", "name_en": "Context7", "domain": "search",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@upstash/context7-mcp@latest"],
+      "auth": "none", "fields": [], "trust": "verified", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/upstash/context7",
+      "description": "给编码与研究提供不会过期的库版本官方文档（社区 #1 server）",
+      "description_en": "Up-to-date library docs, no API key required",
+      "toolset": [
+        { "name": "resolve-library-id", "risk": "read", "desc": "把库名解析为 Context7 文档 ID" },
+        { "name": "get-library-docs", "risk": "read", "desc": "读取指定库的官方文档片段" }
+      ],
+      "verified_at": "2026-10-07"
+    },
+    {
+      "key": "mcp.exa", "name": "Exa 语义搜索", "name_en": "Exa", "domain": "search",
+      "transport": "stdio", "command": "npx", "args": ["-y", "exa-mcp-server"],
+      "auth": "env", "fields": [{ "key": "EXA_API_KEY", "label": "Exa API Key", "hint": "在 exa.ai 控制台获取", "url": "https://dashboard.exa.ai", "input": "EXA_API_KEY", "secret": true }],
+      "trust": "verified", "featured": true,
+      "cost": "metered", "latency": "fast",
+      "docs": "https://docs.exa.ai",
+      "description": "面向 AI 的语义检索与论文检索（神经搜索）",
+      "description_en": "Neural web & paper search built for AI",
+      "toolset": [
+        { "name": "web_search_exa", "risk": "read", "desc": "语义网页搜索" },
+        { "name": "research_paper_search", "risk": "read", "desc": "论文检索" },
+        { "name": "company_research", "risk": "read", "desc": "公司信息调研" },
+        { "name": "crawling", "risk": "read", "desc": "抓取指定 URL 正文" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.tavily", "name": "Tavily 搜索", "name_en": "Tavily", "domain": "search",
+      "transport": "stdio", "command": "npx", "args": ["-y", "tavily-mcp@latest"],
+      "auth": "env", "fields": [{ "key": "TAVILY_API_KEY", "label": "Tavily API Key", "hint": "在 tavily.com 获取（有免费额度）", "url": "https://app.tavily.com", "input": "TAVILY_API_KEY", "secret": true }],
+      "trust": "verified", "featured": true,
+      "cost": "metered", "latency": "fast",
+      "docs": "https://docs.tavily.com",
+      "description": "为 LLM 优化的检索 API（搜索 + 正文提取）",
+      "description_en": "Search API optimized for LLMs",
+      "toolset": [
+        { "name": "tavily-search", "risk": "read", "desc": "网页搜索（含回答摘要）" },
+        { "name": "tavily-extract", "risk": "read", "desc": "提取网页正文" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.brave", "name": "Brave 搜索", "name_en": "Brave Search", "domain": "search",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "auth": "env", "fields": [{ "key": "BRAVE_API_KEY", "label": "Brave API Key", "hint": "在 brave.com/search/api 获取", "url": "https://brave.com/search/api/", "input": "BRAVE_API_KEY", "secret": true }],
+      "trust": "verified", "featured": false,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/modelcontextprotocol/servers",
+      "description": "独立索引的网页与本地搜索",
+      "description_en": "Independent web & local search index",
+      "toolset": [
+        { "name": "brave_web_search", "risk": "read", "desc": "网页搜索" },
+        { "name": "brave_local_search", "risk": "read", "desc": "本地商户搜索" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.perplexity", "name": "Perplexity 问答", "name_en": "Perplexity", "domain": "search",
+      "transport": "stdio", "command": "npx", "args": ["-y", "server-perplexity-ask"],
+      "auth": "env", "fields": [{ "key": "PERPLEXITY_API_KEY", "label": "Perplexity API Key", "hint": "在 perplexity.ai 设置中获取", "url": "https://www.perplexity.ai/settings/api", "input": "PERPLEXITY_API_KEY", "secret": true }],
+      "trust": "verified", "featured": false,
+      "cost": "metered", "latency": "mid",
+      "docs": "https://github.com/modelcontextprotocol/servers",
+      "description": "带引用来源的联网问答",
+      "description_en": "Grounded Q&A with citations",
+      "toolset": [{ "name": "perplexity_ask", "risk": "read", "desc": "联网问答（带来源）" }],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.firecrawl", "name": "Firecrawl 抓取", "name_en": "Firecrawl", "domain": "search",
+      "transport": "stdio", "command": "npx", "args": ["-y", "firecrawl-mcp"],
+      "auth": "env", "fields": [{ "key": "FIRECRAWL_API_KEY", "label": "Firecrawl API Key", "hint": "在 firecrawl.dev 获取", "url": "https://www.firecrawl.dev", "input": "FIRECRAWL_API_KEY", "secret": true }],
+      "trust": "verified", "featured": false,
+      "cost": "metered", "latency": "mid",
+      "docs": "https://docs.firecrawl.dev",
+      "description": "整站抓取、爬取与结构化提取",
+      "description_en": "Scrape, crawl & extract web content",
+      "toolset": [
+        { "name": "firecrawl_scrape", "risk": "read", "desc": "抓取单页（转 Markdown）" },
+        { "name": "firecrawl_search", "risk": "read", "desc": "搜索并抓取结果" },
+        { "name": "firecrawl_crawl", "risk": "read", "desc": "爬取整站" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.playwright", "name": "Playwright 浏览器", "name_en": "Playwright", "domain": "browser",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@playwright/mcp@latest"],
+      "auth": "none", "fields": [], "trust": "official", "featured": true,
+      "cost": "free", "latency": "mid",
+      "docs": "https://github.com/microsoft/playwright-mcp",
+      "description": "微软官方浏览器 Agent：导航、点击、填表、截图、读取页面",
+      "description_en": "Microsoft official browser agent: navigate, click, type, snapshot",
+      "toolset": [
+        { "name": "browser_navigate", "risk": "read", "desc": "打开网址" },
+        { "name": "browser_snapshot", "risk": "read", "desc": "读取当前页面可访问性快照" },
+        { "name": "browser_take_screenshot", "risk": "read", "desc": "网页截图" },
+        { "name": "browser_click", "risk": "read", "desc": "点击页面元素" },
+        { "name": "browser_type", "risk": "read", "desc": "输入文本" },
+        { "name": "browser_evaluate", "risk": "read", "desc": "在页面执行 JS" },
+        { "name": "browser_wait_for", "risk": "read", "desc": "等待条件满足" },
+        { "name": "browser_navigate_back", "risk": "read", "desc": "返回上一页" }
+      ],
+      "verified_at": "2026-10-07"
+    },
+    {
+      "key": "mcp.chrome-devtools", "name": "Chrome DevTools", "name_en": "Chrome DevTools", "domain": "browser",
+      "transport": "stdio", "command": "npx", "args": ["-y", "chrome-devtools-mcp@latest"],
+      "auth": "none", "fields": [], "trust": "official", "featured": true,
+      "cost": "free", "latency": "mid",
+      "docs": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "description": "谷歌官方：性能分析、控制台与网络请求检查",
+      "description_en": "Official: performance traces, console & network inspection",
+      "toolset": [
+        { "name": "navigate_page", "risk": "read", "desc": "打开网址" },
+        { "name": "take_snapshot", "risk": "read", "desc": "页面快照" },
+        { "name": "take_screenshot", "risk": "read", "desc": "页面截图" },
+        { "name": "click", "risk": "read", "desc": "点击元素" },
+        { "name": "fill", "risk": "read", "desc": "填写表单" },
+        { "name": "evaluate_script", "risk": "read", "desc": "执行 JS 脚本" },
+        { "name": "list_console_messages", "risk": "read", "desc": "读取控制台消息" },
+        { "name": "list_network_requests", "risk": "read", "desc": "读取网络请求" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.puppeteer", "name": "Puppeteer 浏览器", "name_en": "Puppeteer", "domain": "browser",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@modelcontextprotocol/server-puppeteer"],
+      "auth": "none", "fields": [], "trust": "community", "featured": false,
+      "cost": "free", "latency": "mid",
+      "docs": "https://github.com/modelcontextprotocol/servers",
+      "description": "经典无头浏览器自动化（官方归档示例，仍可用）",
+      "description_en": "Classic headless browser automation",
+      "toolset": [
+        { "name": "puppeteer_navigate", "risk": "read", "desc": "打开网址" },
+        { "name": "puppeteer_screenshot", "risk": "read", "desc": "页面截图" },
+        { "name": "puppeteer_click", "risk": "read", "desc": "点击元素" },
+        { "name": "puppeteer_evaluate", "risk": "read", "desc": "执行 JS" },
+        { "name": "puppeteer_fill", "risk": "read", "desc": "填写输入框" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.browserbase", "name": "Browserbase 云浏览器", "name_en": "Browserbase", "domain": "browser",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@browserbasehq/mcp-server-browserbase"],
+      "auth": "env", "fields": [
+        { "key": "BROWSERBASE_API_KEY", "label": "API Key", "hint": "在 browserbase.com 获取", "url": "https://www.browserbase.com", "input": "BROWSERBASE_API_KEY", "secret": true },
+        { "key": "BROWSERBASE_PROJECT_ID", "label": "Project ID", "hint": "项目设置中查看", "url": "", "input": "BROWSERBASE_PROJECT_ID", "secret": false }
+      ],
+      "trust": "official", "featured": false,
+      "cost": "metered", "latency": "mid",
+      "docs": "https://docs.browserbase.com",
+      "description": "云端浏览器会话（无需本地 Chrome）",
+      "description_en": "Cloud browser sessions, no local Chrome needed",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.github", "name": "GitHub 官方", "name_en": "GitHub", "domain": "code",
+      "transport": "http", "endpoint": "https://api.githubcopilot.com/mcp/",
+      "auth": "env", "fields": [{ "key": "PAT", "label": "Personal Access Token", "hint": "github.com → Settings → Developer settings → Tokens；只读场景建议 fine-grained 仅 Contents/Issues/PR 读权限", "url": "https://github.com/settings/personal-access-tokens/new", "input": "Authorization", "prefix": "Bearer ", "secret": true }],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/github/github-mcp-server",
+      "description": "官方远程服务：仓库、代码、Issue、PR（支持 PAT，无需安装）",
+      "description_en": "Official remote server: repos, code, issues, PRs (PAT auth)",
+      "toolset": [
+        { "name": "search_repositories", "risk": "read", "desc": "搜索仓库" },
+        { "name": "get_file_contents", "risk": "read", "desc": "读取文件内容" },
+        { "name": "search_code", "risk": "read", "desc": "全站代码搜索" },
+        { "name": "list_issues", "risk": "read", "desc": "列出 Issue" },
+        { "name": "get_issue", "risk": "read", "desc": "读取单个 Issue" },
+        { "name": "list_pull_requests", "risk": "read", "desc": "列出 PR" },
+        { "name": "get_pull_request", "risk": "read", "desc": "读取 PR 详情" },
+        { "name": "create_issue", "risk": "write", "desc": "新建 Issue" },
+        { "name": "create_pull_request", "risk": "write", "desc": "创建 PR" }
+      ],
+      "verified_at": "2026-10-07"
+    },
+    {
+      "key": "mcp.sentry", "name": "Sentry 错误监控", "name_en": "Sentry", "domain": "code",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@sentry/mcp-server@latest"],
+      "auth": "env", "fields": [{ "key": "SENTRY_ACCESS_TOKEN", "label": "Access Token", "hint": "Sentry → Settings → Auth Tokens", "url": "https://sentry.io/settings/auth-tokens/", "input": "SENTRY_ACCESS_TOKEN", "secret": true }],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://docs.sentry.io/product/sentry-mcp/",
+      "description": "官方：错误堆栈、事件与问题根因",
+      "description_en": "Official: issues, stack traces & root cause",
+      "toolset": [
+        { "name": "search_issues", "risk": "read", "desc": "搜索错误问题" },
+        { "name": "get_sentry_issue", "risk": "read", "desc": "读取问题详情" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.linear", "name": "Linear 项目管理", "name_en": "Linear", "domain": "code",
+      "transport": "http", "endpoint": "https://mcp.linear.app/mcp",
+      "auth": "oauth", "fields": [],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://linear.app/docs/mcp",
+      "description": "官方：Issue、项目与路线图（OAuth 连接）",
+      "description_en": "Official: issues, projects & roadmaps (OAuth)",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.gitlab", "name": "GitLab 官方", "name_en": "GitLab", "domain": "code",
+      "transport": "http", "endpoint": "https://gitlab.com/api/v4/mcp",
+      "auth": "oauth", "fields": [],
+      "trust": "official", "featured": false,
+      "cost": "free", "latency": "fast",
+      "docs": "https://docs.gitlab.com/user/gitlab_duo/model_context_protocol/",
+      "description": "内建于 GitLab 的 MCP：Issue、MR、流水线（OAuth）",
+      "description_en": "Built-in MCP: issues, MRs, pipelines (OAuth)",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.git", "name": "Git 本地仓库", "name_en": "Git", "domain": "code",
+      "transport": "stdio", "command": "uvx", "args": ["mcp-server-git", "--repository", "{workspace}"],
+      "auth": "none", "fields": [], "trust": "official", "featured": false,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/modelcontextprotocol/servers",
+      "description": "在本任务工作区里查看状态、差异与提交历史",
+      "description_en": "Status, diff & log inside the task workspace",
+      "toolset": [
+        { "name": "git_status", "risk": "read", "desc": "仓库状态" },
+        { "name": "git_diff", "risk": "read", "desc": "查看差异" },
+        { "name": "git_log", "risk": "read", "desc": "提交历史" },
+        { "name": "git_show", "risk": "read", "desc": "查看某次提交" },
+        { "name": "git_branch", "risk": "read", "desc": "分支列表" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.atlassian", "name": "Atlassian（Jira/Confluence）", "name_en": "Atlassian", "domain": "code",
+      "transport": "http", "endpoint": "https://mcp.atlassian.com/v1/sse",
+      "auth": "oauth", "fields": [],
+      "trust": "official", "featured": false,
+      "cost": "free", "latency": "fast",
+      "docs": "https://www.atlassian.com/platform/remote-mcp-server",
+      "description": "官方：Jira 任务与 Confluence 文档（OAuth）",
+      "description_en": "Official: Jira issues & Confluence pages (OAuth)",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.sqlite", "name": "SQLite 本地数据库", "name_en": "SQLite", "domain": "data",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@modelcontextprotocol/server-sqlite", "{path}"],
+      "auth": "env", "fields": [{ "key": "path", "label": "数据库文件路径", "hint": "例如 D:\\\\data\\\\analysis.db；不存在会自动创建", "url": "", "input": "path", "secret": false }],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/modelcontextprotocol/servers",
+      "description": "把本地 SQLite 文件变成可查询的数据源（结果集直接进表格节点）",
+      "description_en": "Query local SQLite files; results render as tables",
+      "toolset": [
+        { "name": "read_query", "risk": "read", "desc": "执行只读 SELECT" },
+        { "name": "list_tables", "risk": "read", "desc": "列出全部表" },
+        { "name": "describe_table", "risk": "read", "desc": "查看表结构" },
+        { "name": "write_query", "risk": "write", "desc": "执行写 SQL" },
+        { "name": "create_table", "risk": "write", "desc": "建表" }
+      ],
+      "verified_at": "2026-10-07"
+    },
+    {
+      "key": "mcp.postgres", "name": "PostgreSQL 数据库", "name_en": "PostgreSQL", "domain": "data",
+      "transport": "stdio", "command": "uvx", "args": ["postgres-mcp", "--access-mode=restricted"],
+      "auth": "env", "fields": [{ "key": "DATABASE_URI", "label": "连接串", "hint": "postgresql://user:pass@host:5432/db（restricted 模式默认只读）", "url": "", "input": "DATABASE_URI", "secret": true }],
+      "trust": "verified", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/crystaldba/postgres-mcp",
+      "description": "只读模式访问 Postgres：模式探索 + SQL 查询",
+      "description_en": "Read-only Postgres: schema browsing + SQL queries",
+      "toolset": [
+        { "name": "list_schemas", "risk": "read", "desc": "列出模式" },
+        { "name": "list_objects", "risk": "read", "desc": "列出表/视图" },
+        { "name": "get_object_details", "risk": "read", "desc": "表结构详情" },
+        { "name": "explain_query", "risk": "read", "desc": "执行计划分析" },
+        { "name": "execute_sql", "risk": "read", "desc": "执行 SQL（restricted 下只读）" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.duckdb", "name": "DuckDB 分析引擎", "name_en": "DuckDB", "domain": "data",
+      "transport": "stdio", "command": "uvx", "args": ["mcp-server-duckdb", "--db-path", "{path}"],
+      "auth": "env", "fields": [{ "key": "path", "label": "数据库文件路径", "hint": "例如 D:\\\\data\\\\analytics.duckdb；可直接查询 CSV/Parquet", "url": "", "input": "path", "secret": false }],
+      "trust": "community", "featured": false,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/motherduckdb/mcp-server-duckdb",
+      "description": "面向分析的嵌入式数据库（CSV/Parquet 即席分析）",
+      "description_en": "Analytical embedded DB for ad-hoc CSV/Parquet queries",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.supabase", "name": "Supabase 官方", "name_en": "Supabase", "domain": "data",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@supabase/mcp-server-supabase@latest", "--access-token={token}"],
+      "auth": "env", "fields": [{ "key": "token", "label": "Access Token", "hint": "supabase.com/dashboard/account/tokens", "url": "https://supabase.com/dashboard/account/tokens", "input": "token", "secret": true }],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://supabase.com/docs/guides/getting-started/mcp",
+      "description": "官方：项目、表结构与 SQL（含安全建议）",
+      "description_en": "Official: projects, tables & SQL with advisors",
+      "toolset": [
+        { "name": "list_projects", "risk": "read", "desc": "列出项目" },
+        { "name": "list_tables", "risk": "read", "desc": "列出表" },
+        { "name": "list_migrations", "risk": "read", "desc": "迁移历史" },
+        { "name": "get_advisors", "risk": "read", "desc": "安全/性能建议" },
+        { "name": "execute_sql", "risk": "write", "desc": "执行 SQL" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.mongodb", "name": "MongoDB 官方", "name_en": "MongoDB", "domain": "data",
+      "transport": "stdio", "command": "npx", "args": ["-y", "mongodb-mcp-server", "--connectionString", "{uri}"],
+      "auth": "env", "fields": [{ "key": "uri", "label": "连接串", "hint": "mongodb://user:pass@host:27017/db 或 Atlas SRV", "url": "", "input": "uri", "secret": true }],
+      "trust": "official", "featured": false,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/mongodb-js/mongodb-mcp-server",
+      "description": "官方：集合浏览、find / aggregate 查询",
+      "description_en": "Official: collections, find & aggregate",
+      "toolset": [
+        { "name": "find", "risk": "read", "desc": "查询文档" },
+        { "name": "aggregate", "risk": "read", "desc": "聚合管道" },
+        { "name": "list-databases", "risk": "read", "desc": "列出数据库" },
+        { "name": "list-collections", "risk": "read", "desc": "列出集合" },
+        { "name": "count", "risk": "read", "desc": "计数" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.redis", "name": "Redis 数据库", "name_en": "Redis", "domain": "data",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@modelcontextprotocol/server-redis", "{uri}"],
+      "auth": "env", "fields": [{ "key": "uri", "label": "连接串", "hint": "redis://localhost:6379", "url": "", "input": "uri", "secret": false }],
+      "trust": "community", "featured": false,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/modelcontextprotocol/servers",
+      "description": "键值读写与结构浏览",
+      "description_en": "Key-value access & structure browsing",
+      "toolset": [
+        { "name": "get", "risk": "read", "desc": "读取键" },
+        { "name": "hget", "risk": "read", "desc": "读取哈希字段" },
+        { "name": "hgetall", "risk": "read", "desc": "读取整个哈希" },
+        { "name": "keys", "risk": "read", "desc": "列出键" },
+        { "name": "set", "risk": "write", "desc": "写入键" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.notion", "name": "Notion 官方", "name_en": "Notion", "domain": "office",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@notionhq/notion-mcp-server"],
+      "auth": "env", "fields": [{ "key": "NOTION_TOKEN", "label": "Integration Token", "hint": "notion.so/my-integrations → 新建集成；记得把页面共享给该集成", "url": "https://www.notion.so/my-integrations", "input": "NOTION_TOKEN", "secret": true }],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/makenotion/notion-mcp-server",
+      "description": "官方：搜索、读取与写入 Notion 页面",
+      "description_en": "Official: search, read & write Notion pages",
+      "toolset": [
+        { "name": "search", "risk": "read", "desc": "搜索页面/数据库" },
+        { "name": "fetch", "risk": "read", "desc": "读取页面内容" },
+        { "name": "create-pages", "risk": "write", "desc": "新建页面" },
+        { "name": "update-page", "risk": "write", "desc": "更新页面" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.lark", "name": "飞书 / Lark 官方", "name_en": "Feishu / Lark", "domain": "office",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@larksuiteoapi/lark-mcp", "mcp", "-a", "{app_id}", "-s", "{app_secret}"],
+      "auth": "env", "fields": [
+        { "key": "app_id", "label": "App ID", "hint": "open.feishu.cn 开发者后台创建应用后获取", "url": "https://open.feishu.cn/app", "input": "app_id", "secret": false },
+        { "key": "app_secret", "label": "App Secret", "hint": "应用凭证中查看", "url": "", "input": "app_secret", "secret": true }
+      ],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/larksuite/lark-openapi-mcp",
+      "description": "官方：飞书文档、消息与多维表格",
+      "description_en": "Official: Feishu docs, messages & bitables",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.obsidian", "name": "Obsidian 笔记库", "name_en": "Obsidian", "domain": "office",
+      "transport": "stdio", "command": "uvx", "args": ["mcp-obsidian"],
+      "auth": "env", "fields": [
+        { "key": "OBSIDIAN_API_KEY", "label": "Local REST API Key", "hint": "Obsidian 安装 Local REST API 插件后获取", "url": "https://github.com/coddingtonbear/obsidian-local-rest-api", "input": "OBSIDIAN_API_KEY", "secret": true },
+        { "key": "OBSIDIAN_HOST", "label": "Host", "hint": "默认 127.0.0.1（可留空）", "url": "", "input": "OBSIDIAN_HOST", "secret": false, "optional": true }
+      ],
+      "trust": "community", "featured": false,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/MarkusPfundstein/mcp-obsidian",
+      "description": "读写本地 Obsidian 笔记库（配合 Local REST API 插件）",
+      "description_en": "Read & write your Obsidian vault",
+      "toolset": [
+        { "name": "list_files_in_vault", "risk": "read", "desc": "列出笔记" },
+        { "name": "get_file_contents", "risk": "read", "desc": "读取笔记" },
+        { "name": "search", "risk": "read", "desc": "全库搜索" },
+        { "name": "append_content", "risk": "write", "desc": "追加内容" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.slack", "name": "Slack 官方", "name_en": "Slack", "domain": "chat",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "auth": "env", "fields": [
+        { "key": "SLACK_BOT_TOKEN", "label": "Bot Token", "hint": "api.slack.com 创建 App 后获取（xoxb- 开头）", "url": "https://api.slack.com/apps", "input": "SLACK_BOT_TOKEN", "secret": true },
+        { "key": "SLACK_TEAM_ID", "label": "Team ID", "hint": "工作区 ID（T 开头）", "url": "", "input": "SLACK_TEAM_ID", "secret": false }
+      ],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/modelcontextprotocol/servers",
+      "description": "频道消息读取与发送",
+      "description_en": "Read channels & post messages",
+      "toolset": [
+        { "name": "slack_list_channels", "risk": "read", "desc": "列出频道" },
+        { "name": "slack_get_channel_history", "risk": "read", "desc": "读取频道消息" },
+        { "name": "slack_post_message", "risk": "write", "desc": "发送消息" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.gmail", "name": "Gmail 邮件", "name_en": "Gmail", "domain": "chat",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp"],
+      "auth": "oauth", "fields": [],
+      "trust": "community", "featured": true,
+      "cost": "free", "latency": "mid",
+      "docs": "https://github.com/GongRzhe/Gmail-MCP-Server",
+      "description": "读取、搜索与发送 Gmail（OAuth 连接）",
+      "description_en": "Read, search & send Gmail (OAuth)",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.figma", "name": "Figma 设计稿", "name_en": "Figma", "domain": "design",
+      "transport": "stdio", "command": "npx", "args": ["-y", "figma-developer-mcp", "--figma-api-key={key}", "--stdio"],
+      "auth": "env", "fields": [{ "key": "key", "label": "Figma API Key", "hint": "Figma → Settings → Security → Personal access tokens", "url": "https://www.figma.com/developers/api#access-tokens", "input": "key", "secret": true }],
+      "trust": "community", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/GLips/Figma-Context-MCP",
+      "description": "读取设计稿布局与样式、导出图片资源",
+      "description_en": "Read design layout/styles & export assets",
+      "toolset": [
+        { "name": "get_figma_data", "risk": "read", "desc": "读取设计稿结构" },
+        { "name": "download_figma_images", "risk": "read", "desc": "下载设计图资源" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.blender", "name": "Blender 3D", "name_en": "Blender", "domain": "design",
+      "transport": "stdio", "command": "uvx", "args": ["blender-mcp"],
+      "auth": "none", "fields": [], "trust": "community", "featured": true,
+      "cost": "free", "latency": "mid",
+      "docs": "https://github.com/ahujasid/blender-mcp",
+      "description": "控制本地 Blender：场景信息、截图与脚本执行",
+      "description_en": "Control local Blender: scene info, screenshots, scripts",
+      "toolset": [
+        { "name": "get_scene_info", "risk": "read", "desc": "场景信息" },
+        { "name": "get_object_info", "risk": "read", "desc": "对象详情" },
+        { "name": "get_viewport_screenshot", "risk": "read", "desc": "视口截图" },
+        { "name": "execute_blender_code", "risk": "write", "desc": "执行 Blender 脚本" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.canva", "name": "Canva 设计", "name_en": "Canva", "domain": "design",
+      "transport": "http", "endpoint": "https://mcp.canva.com/mcp",
+      "auth": "oauth", "fields": [],
+      "trust": "official", "featured": false,
+      "cost": "free", "latency": "fast",
+      "docs": "https://www.canva.dev/docs/mcp/",
+      "description": "官方：搜索、生成与编辑设计（OAuth）",
+      "description_en": "Official: search, create & edit designs (OAuth)",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.stripe", "name": "Stripe 支付", "name_en": "Stripe", "domain": "finance",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@stripe/mcp", "--tools=all"],
+      "auth": "env", "fields": [{ "key": "STRIPE_SECRET_KEY", "label": "Secret Key", "hint": "Stripe Dashboard → Developers → API keys；建议先用受限 Key", "url": "https://dashboard.stripe.com/apikeys", "input": "STRIPE_SECRET_KEY", "secret": true }],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://docs.stripe.com/agents",
+      "description": "官方：余额、客户、支付与产品数据",
+      "description_en": "Official: balance, customers, payments & products",
+      "toolset": [
+        { "name": "retrieve_balance", "risk": "read", "desc": "账户余额" },
+        { "name": "list_customers", "risk": "read", "desc": "客户列表" },
+        { "name": "list_payment_intents", "risk": "read", "desc": "支付记录" },
+        { "name": "list_products", "risk": "read", "desc": "产品列表" },
+        { "name": "create_payment_link", "risk": "write", "desc": "创建支付链接" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.yfinance", "name": "Yahoo Finance 行情", "name_en": "Yahoo Finance", "domain": "finance",
+      "transport": "stdio", "command": "uvx", "args": ["yahoo-finance-mcp"],
+      "auth": "none", "fields": [], "trust": "community", "featured": true,
+      "cost": "free", "latency": "mid",
+      "docs": "https://github.com/Alex2Yang97/yahoo-finance-mcp",
+      "description": "美股 / 全球行情与财务数据（社区维护）",
+      "description_en": "US & global market data (community)",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.cloudflare", "name": "Cloudflare 观测", "name_en": "Cloudflare", "domain": "cloud",
+      "transport": "http", "endpoint": "https://observability.mcp.cloudflare.com/mcp",
+      "auth": "oauth", "fields": [],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://developers.cloudflare.com/agents/model-context-protocol/",
+      "description": "官方：日志、分析与运行时观测（OAuth）",
+      "description_en": "Official: logs, analytics & runtime observability (OAuth)",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.vercel", "name": "Vercel 部署", "name_en": "Vercel", "domain": "cloud",
+      "transport": "http", "endpoint": "https://mcp.vercel.com",
+      "auth": "oauth", "fields": [],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://vercel.com/docs/mcp",
+      "description": "官方：项目、部署与日志（OAuth）",
+      "description_en": "Official: projects, deployments & logs (OAuth)",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.aws", "name": "AWS 实验室", "name_en": "AWS Labs", "domain": "cloud",
+      "transport": "stdio", "command": "uvx", "args": ["awslabs.core-mcp-server@latest"],
+      "auth": "env", "fields": [
+        { "key": "AWS_REGION", "label": "Region", "hint": "例如 ap-southeast-1", "url": "", "input": "AWS_REGION", "secret": false },
+        { "key": "AWS_PROFILE", "label": "Profile", "hint": "本机 ~/.aws/credentials 中的 profile 名（可留空用默认）", "url": "", "input": "AWS_PROFILE", "secret": false, "optional": true }
+      ],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "mid",
+      "docs": "https://github.com/awslabs/mcp",
+      "description": "官方实验室：云资源查询与操作（自托管）",
+      "description_en": "Official AWS Labs: query & manage cloud resources",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.docker", "name": "Docker MCP 网关", "name_en": "Docker", "domain": "cloud",
+      "transport": "stdio", "command": "docker", "args": ["mcp", "gateway", "run"],
+      "auth": "none", "fields": [], "trust": "official", "featured": false,
+      "cost": "free", "latency": "mid",
+      "docs": "https://docs.docker.com/ai/mcp-catalog-and-toolkit/",
+      "description": "Docker 官方网关：一站式接入其目录内的容器化 server",
+      "description_en": "Docker gateway for containerized MCP servers",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.amap", "name": "高德地图", "name_en": "AMap", "domain": "life",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@amap/amap-maps-mcp-server"],
+      "auth": "env", "fields": [{ "key": "AMAP_MAPS_API_KEY", "label": "高德 Web 服务 Key", "hint": "console.amap.com 创建应用（Web 服务类型）", "url": "https://console.amap.com/dev/key/app", "input": "AMAP_MAPS_API_KEY", "secret": true }],
+      "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://lbs.amap.com/api/mcp-server/summary",
+      "description": "官方：地理编码、POI 搜索、路径与天气",
+      "description_en": "Official: geocoding, POI search, routing & weather",
+      "toolset": [
+        { "name": "maps_geo", "risk": "read", "desc": "地址转坐标" },
+        { "name": "maps_regeocode", "risk": "read", "desc": "坐标转地址" },
+        { "name": "maps_around_search", "risk": "read", "desc": "周边 POI 搜索" },
+        { "name": "maps_text_search", "risk": "read", "desc": "关键词 POI 搜索" },
+        { "name": "maps_weather", "risk": "read", "desc": "天气查询" },
+        { "name": "maps_distance", "risk": "read", "desc": "距离测量" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.google-calendar", "name": "Google 日历", "name_en": "Google Calendar", "domain": "life",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@cocal/google-calendar-mcp"],
+      "auth": "oauth", "fields": [],
+      "trust": "community", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/nspady/google-calendar-mcp",
+      "description": "读取与创建日程（OAuth 连接）",
+      "description_en": "Read & create events (OAuth)",
+      "toolset": [
+        { "name": "list-events", "risk": "read", "desc": "列出日程" },
+        { "name": "search-events", "risk": "read", "desc": "搜索日程" },
+        { "name": "create-event", "risk": "write", "desc": "创建日程" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.time", "name": "时间与时区", "name_en": "Time", "domain": "life",
+      "transport": "stdio", "command": "uvx", "args": ["mcp-server-time"],
+      "auth": "none", "fields": [], "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/modelcontextprotocol/servers",
+      "description": "当前时间与时区换算（时效事实类任务的轻量工具）",
+      "description_en": "Current time & timezone conversion",
+      "toolset": [
+        { "name": "get_current_time", "risk": "read", "desc": "当前时间" },
+        { "name": "convert_time", "risk": "read", "desc": "时区换算" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.elevenlabs", "name": "ElevenLabs 语音", "name_en": "ElevenLabs", "domain": "media",
+      "transport": "stdio", "command": "uvx", "args": ["elevenlabs-mcp"],
+      "auth": "env", "fields": [{ "key": "ELEVENLABS_API_KEY", "label": "API Key", "hint": "elevenlabs.io 个人设置", "url": "https://elevenlabs.io/app/settings/api-keys", "input": "ELEVENLABS_API_KEY", "secret": true }],
+      "trust": "official", "featured": true,
+      "cost": "metered", "latency": "mid",
+      "docs": "https://github.com/elevenlabs/elevenlabs-mcp",
+      "description": "官方：文本转语音与音效生成",
+      "description_en": "Official: text-to-speech & sound effects",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.ffmpeg", "name": "FFmpeg 媒体处理", "name_en": "FFmpeg", "domain": "media",
+      "transport": "stdio", "command": "npx", "args": ["-y", "ffmpeg-mcp"],
+      "auth": "none", "fields": [], "trust": "community", "featured": true,
+      "cost": "free", "latency": "slow",
+      "docs": "https://github.com/video-creator/ffmpeg-mcp",
+      "description": "本地音视频转码 / 截取 / 拼接（需本机装 ffmpeg）",
+      "description_en": "Local audio/video transcode, trim & concat (needs ffmpeg)",
+      "toolset": [],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.filesystem", "name": "本地文件系统", "name_en": "Filesystem", "domain": "knowledge",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@modelcontextprotocol/server-filesystem", "{workspace}"],
+      "auth": "none", "fields": [], "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/modelcontextprotocol/servers",
+      "description": "官方：在任务工作区内读写文件（范围由服务端锁定，无越界）",
+      "description_en": "Official: read/write files scoped to the task workspace",
+      "toolset": [
+        { "name": "read_text_file", "risk": "read", "desc": "读取文本文件" },
+        { "name": "read_multiple_files", "risk": "read", "desc": "批量读取" },
+        { "name": "list_directory", "risk": "read", "desc": "列出目录" },
+        { "name": "directory_tree", "risk": "read", "desc": "目录树" },
+        { "name": "search_files", "risk": "read", "desc": "按名称搜索文件" },
+        { "name": "get_file_info", "risk": "read", "desc": "文件元信息" },
+        { "name": "write_file", "risk": "write", "desc": "写入文件" },
+        { "name": "edit_file", "risk": "write", "desc": "编辑文件" },
+        { "name": "create_directory", "risk": "write", "desc": "创建目录" }
+      ],
+      "verified_at": "2026-10-07"
+    },
+    {
+      "key": "mcp.memory", "name": "知识图谱记忆", "name_en": "Memory", "domain": "knowledge",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "auth": "none", "fields": [], "trust": "official", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/modelcontextprotocol/servers",
+      "description": "官方：跨会话的实体关系记忆（知识图谱）",
+      "description_en": "Official: cross-session knowledge graph memory",
+      "toolset": [
+        { "name": "read_graph", "risk": "read", "desc": "读取图谱" },
+        { "name": "search_nodes", "risk": "read", "desc": "搜索实体" },
+        { "name": "open_nodes", "risk": "read", "desc": "打开实体" },
+        { "name": "create_entities", "risk": "write", "desc": "创建实体" },
+        { "name": "create_relations", "risk": "write", "desc": "创建关系" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.sequential-thinking", "name": "结构化思考", "name_en": "Sequential Thinking", "domain": "knowledge",
+      "transport": "stdio", "command": "npx", "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "auth": "none", "fields": [], "trust": "official", "featured": false,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/modelcontextprotocol/servers",
+      "description": "把复杂推理拆成可回溯的思考步骤",
+      "description_en": "Structured multi-step reasoning scratchpad",
+      "toolset": [{ "name": "sequentialthinking", "risk": "read", "desc": "逐步推理" }],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.qdrant", "name": "Qdrant 向量库", "name_en": "Qdrant", "domain": "knowledge",
+      "transport": "stdio", "command": "uvx", "args": ["mcp-server-qdrant"],
+      "auth": "env", "fields": [
+        { "key": "QDRANT_URL", "label": "Qdrant URL", "hint": "http://localhost:6333 或云端地址", "url": "", "input": "QDRANT_URL", "secret": false },
+        { "key": "QDRANT_API_KEY", "label": "API Key", "hint": "云端需要，本地可留空", "url": "", "input": "QDRANT_API_KEY", "secret": true, "optional": true },
+        { "key": "COLLECTION_NAME", "label": "集合名", "hint": "默认 mem0", "url": "", "input": "COLLECTION_NAME", "secret": false }
+      ],
+      "trust": "official", "featured": false,
+      "cost": "free", "latency": "fast",
+      "docs": "https://github.com/qdrant/mcp-server-qdrant",
+      "description": "官方：向量语义检索与存储",
+      "description_en": "Official: semantic search & vector store",
+      "toolset": [
+        { "name": "qdrant-find", "risk": "read", "desc": "语义检索" },
+        { "name": "qdrant-store", "risk": "write", "desc": "写入记忆" }
+      ],
+      "verified_at": ""
+    },
+    {
+      "key": "mcp.demo", "name": "内置演示 Agent", "name_en": "Built-in Demo Agent", "domain": "knowledge",
+      "transport": "stdio", "command": "", "args": [],
+      "builtin": "demo",
+      "auth": "none", "fields": [], "trust": "local", "featured": true,
+      "cost": "free", "latency": "fast",
+      "docs": "",
+      "description": "零配置连通性演示：随平台分发的本地 MCP 服务器（不需要联网与安装）",
+      "description_en": "Zero-config local MCP server shipped with the platform",
+      "toolset": [
+        { "name": "now", "risk": "read", "desc": "当前时间（时效事实演示）" },
+        { "name": "calc", "risk": "read", "desc": "安全四则运算" },
+        { "name": "echo", "risk": "read", "desc": "回显（连通性验证）" },
+        { "name": "recent_days", "risk": "read", "desc": "最近 N 天日期列表" }
+      ],
+      "verified_at": "2026-10-07"
+    }
+  ]
+}

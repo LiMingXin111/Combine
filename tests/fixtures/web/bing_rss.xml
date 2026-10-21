@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic parser contract fixture. -->
+<rss version="2.0"><channel><title>Example feed</title>
+<item><title>Example reference 0</title><link>https://example.org/reference/0</link><description>Example summary 0.</description><pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate><source url="https://example.org">Example publisher</source></item>
+<item><title>Example reference 1</title><link>https://example.org/reference/1</link><description>Example summary 1.</description><pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate><source url="https://example.org">Example publisher</source></item>
+<item><title>Example reference 2</title><link>https://example.org/reference/2</link><description>Example summary 2.</description><pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate><source url="https://example.org">Example publisher</source></item>
+<item><title>Example reference 3</title><link>https://example.org/reference/3</link><description>Example summary 3.</description><pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate><source url="https://example.org">Example publisher</source></item>
+<item><title>Example reference 4</title><link>https://example.org/reference/4</link><description>Example summary 4.</description><pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate><source url="https://example.org">Example publisher</source></item>
+<item><title>Example reference 5</title><link>https://example.org/reference/5</link><description>Example summary 5.</description><pubDate>Mon, 01 Jan 2024 00:00:00 GMT</pubDate><source url="https://example.org">Example publisher</source></item>
+</channel></rss>

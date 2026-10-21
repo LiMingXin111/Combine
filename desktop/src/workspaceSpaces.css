@@ -1,0 +1,299 @@
+.space-selector {
+  width: 100%;
+  text-align: left;
+  color: var(--text);
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.space-selector:hover {
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+}
+.space-selector > div {
+  min-width: 0;
+  flex: 1;
+}
+.space-selector strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.space-selector .team-avatar {
+  color: #60a5fa;
+  background: #3b82f61a;
+}
+.spaces-shade {
+  z-index: 250;
+}
+.spaces-dialog {
+  width: min(680px, calc(100vw - 48px));
+  max-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+.spaces-dialog > header {
+  padding: 20px 24px;
+  margin: 0;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.spaces-body {
+  padding: 20px 24px;
+  overflow: auto;
+  min-height: 0;
+  overscroll-behavior: contain;
+}
+.spaces-body label:not(.space-check) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 14px 0;
+  color: var(--text);
+  font-weight: 500;
+}
+.spaces-body input:not([type="checkbox"]),
+.spaces-body select,
+.spaces-body textarea {
+  width: 100%;
+  min-width: 0;
+  font-weight: 400;
+}
+.spaces-body textarea {
+  resize: vertical;
+}
+.space-intro,
+.space-hint {
+  color: var(--muted);
+  line-height: 1.65;
+}
+.space-intro {
+  margin: 0 0 18px;
+}
+.space-hint {
+  display: block;
+  font-size: 12px;
+}
+.space-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 18px;
+}
+.space-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--surface);
+  text-align: left;
+}
+.space-row:hover,
+.space-row.selected {
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+}
+.space-row > span {
+  flex: 1;
+  min-width: 0;
+}
+.space-row strong {
+  overflow-wrap: anywhere;
+}
+.spaces-body small {
+  display: block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.space-option-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 18px 0;
+}
+.space-option-grid > button {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  align-items: center;
+  gap: 4px 9px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  text-align: left;
+  padding: 16px;
+}
+.space-option-grid > button:hover {
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+}
+.space-option-grid small {
+  grid-column: 2;
+  line-height: 1.5;
+}
+.space-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0;
+}
+.space-account-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+  padding-top: 16px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.space-account-line span {
+  overflow-wrap: anywhere;
+}
+.space-error,
+.space-notice,
+.space-progress {
+  padding: 12px 24px;
+  flex-shrink: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.space-error {
+  color: var(--danger);
+  background: #ff667d12;
+}
+.space-notice {
+  color: var(--text);
+  background: var(--accent-soft);
+}
+.space-progress {
+  color: var(--muted);
+  background: var(--surface-2);
+}
+.space-check {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  line-height: 1.6;
+  font-size: 13px;
+  margin: 18px 0;
+}
+.space-check input {
+  margin-top: 4px;
+  accent-color: var(--focus);
+}
+.space-steps {
+  display: flex;
+  list-style: none;
+  gap: 12px;
+  padding: 0;
+  margin: 0 0 20px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.space-steps li {
+  flex: 1;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 10px;
+}
+.space-review {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 16px;
+  margin: 16px 0;
+}
+.space-review ul,
+.spaces-body details ul {
+  padding-left: 20px;
+  line-height: 1.8;
+  font-size: 12px;
+  color: var(--muted);
+}
+.space-template {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  margin: 14px 0;
+  background: var(--surface);
+}
+.space-template > div:first-child {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.space-template h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.space-template p {
+  color: var(--muted);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+.space-version {
+  font-size: 11px;
+  white-space: nowrap;
+  color: var(--muted);
+}
+.space-member,
+.space-invite,
+.space-remote-team {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.space-invite {
+  font-size: 12px;
+  color: var(--muted);
+}
+.space-empty {
+  padding: 28px 12px;
+  text-align: center;
+  color: var(--muted);
+}
+.space-empty .space-actions {
+  justify-content: center;
+}
+.space-json {
+  margin: 18px 0;
+}
+.spaces-body summary {
+  cursor: pointer;
+  font-weight: 500;
+  padding: 10px 0;
+}
+.space-json pre {
+  max-height: 300px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  font: 11px/1.6 var(--font-code);
+  tab-size: 2;
+}
+.spaces-back {
+  margin-top: 20px;
+}
+.space-member > span,
+.space-remote-team > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}

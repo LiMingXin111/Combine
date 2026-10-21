@@ -1,0 +1,72 @@
+{
+  "message": {
+    "items": [
+      {
+        "title": [
+          "Synthetic reference 0"
+        ],
+        "URL": "https://example.org/reference/0",
+        "issued": {
+          "date-parts": [
+            [
+              2024,
+              1,
+              1
+            ]
+          ]
+        },
+        "author": [
+          {
+            "given": "Example",
+            "family": "Author"
+          }
+        ],
+        "type": "journal-article"
+      },
+      {
+        "title": [
+          "Synthetic reference 1"
+        ],
+        "URL": "https://example.org/reference/1",
+        "issued": {
+          "date-parts": [
+            [
+              2024,
+              1,
+              1
+            ]
+          ]
+        },
+        "author": [
+          {
+            "given": "Example",
+            "family": "Author"
+          }
+        ],
+        "type": "journal-article"
+      },
+      {
+        "title": [
+          "Synthetic reference 2"
+        ],
+        "URL": "https://example.org/reference/2",
+        "issued": {
+          "date-parts": [
+            [
+              2024,
+              1,
+              1
+            ]
+          ]
+        },
+        "author": [
+          {
+            "given": "Example",
+            "family": "Author"
+          }
+        ],
+        "type": "journal-article"
+      }
+    ]
+  }
+}

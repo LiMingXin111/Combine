@@ -1,0 +1,13 @@
+{
+    email {$ACME_EMAIL}
+}
+
+{$COMBINE_DOMAIN} {
+    request_body {
+        max_size 3MB
+    }
+    reverse_proxy app:8765 {
+        flush_interval -1
+        header_up X-Forwarded-For {remote_host}
+    }
+}

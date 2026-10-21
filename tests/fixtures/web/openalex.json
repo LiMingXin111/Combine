@@ -1,0 +1,73 @@
+{
+  "results": [
+    {
+      "title": "Synthetic reference 0",
+      "primary_location": {
+        "landing_page_url": "https://example.org/reference/0"
+      },
+      "authorships": [
+        {
+          "author": {
+            "display_name": "Example Author"
+          }
+        }
+      ],
+      "publication_year": 2024,
+      "cited_by_count": 1,
+      "abstract_inverted_index": {
+        "Example": [
+          0
+        ],
+        "reference": [
+          1
+        ]
+      }
+    },
+    {
+      "title": "Synthetic reference 1",
+      "primary_location": {
+        "landing_page_url": "https://example.org/reference/1"
+      },
+      "authorships": [
+        {
+          "author": {
+            "display_name": "Example Author"
+          }
+        }
+      ],
+      "publication_year": 2024,
+      "cited_by_count": 2,
+      "abstract_inverted_index": {
+        "Example": [
+          0
+        ],
+        "reference": [
+          1
+        ]
+      }
+    },
+    {
+      "title": "Synthetic reference 2",
+      "primary_location": {
+        "landing_page_url": "https://example.org/reference/2"
+      },
+      "authorships": [
+        {
+          "author": {
+            "display_name": "Example Author"
+          }
+        }
+      ],
+      "publication_year": 2024,
+      "cited_by_count": 3,
+      "abstract_inverted_index": {
+        "Example": [
+          0
+        ],
+        "reference": [
+          1
+        ]
+      }
+    }
+  ]
+}

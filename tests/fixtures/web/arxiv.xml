@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic identifiers; these are not research citations. -->
+<feed xmlns="http://www.w3.org/2005/Atom">
+<entry><id>http://arxiv.org/abs/0000.00000</id><title>Synthetic reference 0</title><author><name>Example Author</name></author><summary>Authored example for parser tests.</summary><published>2024-01-01T00:00:00Z</published></entry>
+<entry><id>http://arxiv.org/abs/0000.00001</id><title>Synthetic reference 1</title><author><name>Example Author</name></author><summary>Authored example for parser tests.</summary><published>2024-01-01T00:00:00Z</published></entry>
+<entry><id>http://arxiv.org/abs/0000.00002</id><title>Synthetic reference 2</title><author><name>Example Author</name></author><summary>Authored example for parser tests.</summary><published>2024-01-01T00:00:00Z</published></entry>
+</feed>

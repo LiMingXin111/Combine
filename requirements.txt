@@ -1,0 +1,4 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+cryptography>=42
+python-multipart>=0.0.9

@@ -1,0 +1,29 @@
+* text=auto
+*.py text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.csv text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.docx binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.woff2 binary
+
+desktop/** text=auto eol=lf
+desktop/**/*.png -text
+desktop/**/*.ico -text
+desktop/**/*.icns -text
+.github/workflows/desktop-checks.yml text eol=lf
+docs/implementation/** text=auto eol=lf
+docs/implementation/**/*.png -text
+
+# Keep upstream reference and license checksums stable across checkouts.
+desktop/runtime/community/files/* -text whitespace=-blank-at-eol,-blank-at-eof
+desktop/runtime/community/licenses/* -text whitespace=-blank-at-eol,-blank-at-eof

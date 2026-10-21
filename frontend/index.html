@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Combine</title>
+  <link rel="stylesheet" href="/static/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <div class="app" id="app"></div>
+  <div class="overlay" id="overlay"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="mp-pop" id="mpPop" role="listbox"></div>
+  <noscript>JavaScript is required to use this application.</noscript>
+  <!-- 开源地图库 Leaflet（本地 vendor，无 CDN 依赖；v2.0 画布内可操控地图） -->
+  <script src="/static/vendor/leaflet/leaflet.js"></script>
+  <!-- 开源二维码库 qrcode-generator（本地 vendor，MIT；v3.1 微信扫码登录出码） -->
+  <script src="/static/vendor/qrcode/qrcode.js"></script>
+  <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>

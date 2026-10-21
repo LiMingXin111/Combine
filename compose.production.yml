@@ -1,0 +1,50 @@
+name: combine
+services:
+  app:
+    build: .
+    image: combine:${COMBINE_RELEASE:-local}
+    env_file: .env.production
+    environment:
+      DEPLOY_MODE: cloud
+      DATA_DIR: /data
+      DB_PATH: /data/combine.db
+      COOKIE_SECURE: "1"
+      TRUST_PROXY: "1"
+      REGISTRATION_MODE: ${REGISTRATION_MODE:-closed}
+    expose: ["8765"]
+    volumes:
+      - combine-data:/data
+    restart: unless-stopped
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    stop_grace_period: 45s
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+  proxy:
+    image: caddy:2-alpine
+    environment:
+      COMBINE_DOMAIN: ${COMBINE_DOMAIN:?Set COMBINE_DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL:?Set ACME_EMAIL}
+    ports: ["80:80", "443:443", "443:443/udp"]
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      app: {condition: service_healthy}
+    restart: unless-stopped
+    cap_drop: [ALL]
+    cap_add: [NET_BIND_SERVICE]
+    security_opt: ["no-new-privileges:true"]
+    logging:
+      driver: json-file
+      options: {max-size: "10m", max-file: "3"}
+volumes:
+  combine-data:
+  caddy-data:
+  caddy-config:
