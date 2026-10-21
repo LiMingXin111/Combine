@@ -1,18 +1,54 @@
 # Combine
 
-A local-first desktop application for building, editing and running visual AI workflows.
+**让 AI 工作变得可对话、可编辑、可视化。**
 
-Describe a task in the right-hand conversation, let your configured model build a workflow, and refine its nodes and connections through conversation or direct editing. Inputs, processing, research, AI reasoning, visualizations and final deliverables share one editable canvas.
+Combine 将你的任务描述转化为节点工作流。通过持续对话或直接编辑画布，连接 AI 模型、调研、数据处理和可复用能力，一步步形成最终成果。
 
-## Features
+**Make AI work conversational, editable and visual.**
 
-- Editable node graphs with typed ports, Shift selection, resizable content, reusable composites and independent workflow versions.
-- Real API connections and provider model discovery; an optional downloaded local model. Supply your own model credentials.
-- Local files, PDF/Office extraction, image OCR, searchable knowledge, references and local exports.
-- Documents, tables, charts, images, coordinate maps, public web research and a consolidated final-answer panel.
-- Skills, agents and expert nodes, including 40 pinned, licensed public method adapters. They provide instructions through installed executors; they do not execute arbitrary upstream scripts.
-- Persistent execution events, pause/continue, single-node execution, cancellation, result reuse and recovery. The top button is green to start and red to stop.
-- Independent local spaces and optional self-hosted teams with invitations and explicitly reviewed workflow-template sharing.
+Combine turns task descriptions into node workflows. Refine the flow through conversation or direct canvas edits, connecting AI models, research, data processing and reusable capabilities to produce a final deliverable.
+
+## 功能亮点 / Highlights
+
+| 中文 | English |
+| --- | --- |
+| **对话驱动编排**：让 AI 创建、连接和修改节点，持续完善工作流。 | **Chat-driven orchestration:** ask AI to create, connect and refine nodes as your task evolves. |
+| **可视化执行**：查看节点状态、分支连接，以及画布中的文字、表格、图表、图片和地图。 | **Visual execution:** follow node states and branches, with text, tables, charts, images and maps on the canvas. |
+| **自由选择模型**：接入自己的 API Key，选择提供商和具体模型。 | **Your choice of model:** connect your API key and select a provider and model. |
+| **可扩展能力库**：使用 Skills、Agents、Experts 和组合节点，复用已有工作流。 | **Extensible capabilities:** reuse skills, agents, experts and composite workflows as nodes. |
+| **成果与协作**：汇总最终答案、导出成果，并向团队分享经过确认的工作流模板。 | **Deliver and collaborate:** collect final answers, export results and share reviewed workflow templates with your team. |
+
+另支持本机模型与离线工作流，可按需要使用。 / On-device models and offline workflows are also available when needed.
+
+## 界面预览 / Screenshots
+
+以下为独立演示工作区的真实界面，使用示例数据，不含私人会话或 API 密钥。画布示例中的计算、图表和报告均由实际节点执行生成。
+
+These views use sample data in a clean demo workspace, without personal conversations or API credentials. The calculations, chart and report in the canvas example come from actual node execution.
+
+### 节点画布与最终成果 / Workflow canvas and results
+
+从输入到处理、可视化与交付，在同一画布中查看连接、完成状态和最终结果。
+
+Follow inputs, processing, visualizations and deliverables on one canvas, with visible connections, completion states and final results.
+
+![Combine workflow canvas with completed nodes, a channel chart and a final report](docs/images/workflow-canvas.png)
+
+### 可复用能力库 / Reusable capabilities
+
+通过能力库添加工具、技能、智能体和专家节点，或将工作流封装为新的组合能力。
+
+Add tools, skills, agents and expert nodes from the library, or package a workflow into a reusable capability.
+
+![Combine node library with skills, agents, expert categories and community capabilities](docs/images/capability-library.png)
+
+### 模型与 API 配置 / Models and API connections
+
+选择模型提供商，配置自己的 API Key，并获取可用模型或手动指定模型 ID。
+
+Choose a provider, add your API key, and fetch available models or enter a specific model ID.
+
+![Combine AI connection form with provider, API endpoint, empty key field and model selection](docs/images/ai-connections.png)
 
 ## Run the desktop app
 
@@ -48,7 +84,7 @@ The repository also contains the separate browser/server compatibility applicati
 
 Private desktop attachments, knowledge, local references and derived material stay on the device. Only public prompts you choose to send use a configured API. Team sharing uploads a reviewed, sanitized workflow definition; downloaded copies are independent and never auto-run.
 
-This repository contains application source, dependency locks, automated synthetic contract tests, build/start scripts and required public third-party assets/licenses. It does not include API keys, user workspaces/databases, real conversations, screenshots, private documents, model weights, build tools or generated installers. Downloaded model/runtime resources have their own licenses.
+This repository contains application source, dependency locks, automated synthetic contract tests, build/start scripts, reviewed product screenshots made with sample data, and required public third-party assets/licenses. It does not include API keys, user workspaces/databases, personal conversations or captures, private documents, model weights, build tools or generated installers. Downloaded model/runtime resources have their own licenses.
 
 ## Checks
 
